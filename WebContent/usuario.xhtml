@@ -7,25 +7,69 @@
 <title>Books</title>
 </head>
 <body>
+	<h1>.:Cadastro Usuario:.</h1>
 	<h:form>
 		<h:panelGrid columns="2">
-			<p>Nome</p>	
-			<input jsf:id="nome" type="text" placeholder="Login" jsf:value="#{usuarioController.usuario.nome}"/>		
+			<p>ID</p>
+			<input jsf:id="id" type="text" placeholder="Login"
+				jsf:value="#{usuarioController.usuario.id}" />
+			<p>Nome</p>
+			<input jsf:id="nome" type="text" placeholder="Login"
+				jsf:value="#{usuarioController.usuario.nome}" />
 			<p>Login</p>
-			<input jsf:id="login" type="text" placeholder="Senha" jsf:value="#{usuarioController.usuario.login}" />				
+			<input jsf:id="login" type="text" placeholder="Senha"
+				jsf:value="#{usuarioController.usuario.login}" />
 			<p>Senha</p>
-			<input jsf:id="senha" type="password" placeholder="Senha" jsf:value="#{usuarioController.usuario.senha}" />					
+			<input jsf:id="senha" type="password" placeholder="Senha"
+				jsf:value="#{usuarioController.usuario.senha}" />
 			<p>Email</p>
-			<input jsf:id="email" type="text" placeholder="Senha" jsf:value="#{usuarioController.usuario.email}" />						
-			
-			<button type="Submit" jsf:actionListener="#{usuarioController.incluir}">Incluir</button>
-			<button type="Submit" jsf:actionListener="#{usuarioController.limpar}">Alterar</button>
-						
-			<button type="Submit" jsf:action="#{usuarioController.entrar}">Excluir</button>
-			<button type="Submit" jsf:actionListener="#{usuarioController.limpar}">Limpar</button>
+			<input jsf:id="email" type="text" placeholder="Senha"
+				jsf:value="#{usuarioController.usuario.email}" />
 
-			
+			<button type="Submit"
+				jsf:actionListener="#{usuarioController.incluir}">Incluir</button>
+			<button type="Submit"
+				jsf:actionListener="#{usuarioController.limpar}">Alterar</button>
+
+			<button type="Submit" jsf:action="#{usuarioController.remover}">Excluir</button>
+			<button type="Submit"
+				jsf:actionListener="#{usuarioController.limpar}">Limpar</button>
+
+
 		</h:panelGrid>
+
 	</h:form>
+	<h:form>
+		<h:dataTable value="#{usuarioController.listaUsuario}" var="lista">
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputLabel value="#{lista.id}"></h:outputLabel>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:outputLabel value="#{lista.nome}"></h:outputLabel>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Login</f:facet>
+				<h:outputLabel value="#{lista.login}"></h:outputLabel>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Senha</f:facet>
+				<h:outputLabel value="#{lista.senha}"></h:outputLabel>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Email</f:facet>
+				<h:outputLabel value="#{lista.email}"></h:outputLabel>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Ação</f:facet>
+				<h:commandLink value="Editar"
+					actionListener="#{usuarioController.editar(lista)}"></h:commandLink>
+			</h:column>
+		</h:dataTable>
+
+
+	</h:form>
+
 </body>
 </html>
