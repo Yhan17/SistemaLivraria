@@ -9,20 +9,14 @@
 <body>
 	<h:form>
 		<h:panelGrid columns="2">
-			<p>Nome</p>	
-			<input jsf:id="login" type="text" placeholder="Login" jsf:value="#{loginController.login}" jsf:binding="#{loginController.texto}"/>		
 			<p>Login</p>
-			<input jsf:id="senha" type="password" placeholder="Senha" jsf:value="#{loginController.senha}" jsf:binding="#{loginController.texto2}"/>				
+			<input jsf:id="senha" type="password" placeholder="Senha" jsf:value="#{loginController.senha}" />				
 			<p>Senha</p>
-			<input jsf:id="senha" type="password" placeholder="Senha" jsf:value="#{loginController.senha}" jsf:binding="#{loginController.texto2}"/>					
-			<p>Email</p>
-			<input jsf:id="senha" type="password" placeholder="Senha" jsf:value="#{loginController.senha}" jsf:binding="#{loginController.texto2}"/>						
-			
-			<button type="Submit" jsf:action="#{loginController.entrar}">Incluir</button>
-			<button type="Submit" jsf:actionListener="#{loginController.limpar}">Alterar</button>
+			<input jsf:id="senha" type="password" placeholder="Senha" jsf:value="#{loginController.senha}" />					
+>
 						
-			<button type="Submit" jsf:action="#{loginController.entrar}">Excluir</button>
-			<button type="Submit" jsf:actionListener="#{loginController.limpar}">Limpar</button>
+			<button type="Submit" jsf:action="#">Entrar</button>
+			<button type="Submit" jsf:actionListener="#">Limpar</button>
 
 			
 		</h:panelGrid>

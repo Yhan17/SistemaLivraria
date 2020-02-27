@@ -7,7 +7,7 @@ import javax.inject.Named;
 
 import br.unitins.books.model.Usuario;
 
-@Named
+@Named("usuarioController")
 @ViewScoped
 public class UsuarioController implements Serializable {
 
