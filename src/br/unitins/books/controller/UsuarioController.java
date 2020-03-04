@@ -28,7 +28,7 @@ public class UsuarioController implements Serializable {
 	}
 
 	public void alterar() {
-		System.out.println(getUsuario().getNome());
+		listaUsuario.set(getUsuario().getId(), getUsuario());
 	}
 
 	public void remover() {
