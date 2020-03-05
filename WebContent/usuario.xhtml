@@ -29,7 +29,7 @@
 			<button type="Submit"
 				jsf:actionListener="#{usuarioController.incluir}" jsf:disabled="#{usuarioController.usuario.id != null}">Incluir</button>
 			<button type="Submit"
-				jsf:actionListener="#{usuarioController.limpar}" jsf:disabled="#{usuarioController.usuario.id == null}">Alterar</button>
+				jsf:actionListener="#{usuarioController.alterar}" jsf:disabled="#{usuarioController.usuario.id == null}">Alterar</button>
 
 			<button type="Submit" jsf:action="#{usuarioController.remover}" jsf:disabled="#{usuarioController.usuario.id == null}">Excluir</button>
 			<button type="Submit"
