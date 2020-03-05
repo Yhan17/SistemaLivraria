@@ -7,6 +7,7 @@ import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import br.unitins.books.application.Util;
 import br.unitins.books.model.Usuario;
 
 @Named("usuarioController")
@@ -18,10 +19,34 @@ public class UsuarioController implements Serializable {
 	private Usuario usuario;
 	private List<Usuario> listaUsuario ;
 
+	
+	private int proximoId() {
+		int resultado = 0;
+		for (Usuario usuario : listaUsuario) {
+			if(usuario.getId() > resultado)
+				resultado = usuario.getId();
+		}
+		/*		
+				
+				
+				
+				*/
+		return ++resultado;
+	}
 
 	public void incluir() {
+		//O trim() elimina espaçõs antes e depois da String(java 1.8)
+		/*	Solução java 13:
+			if(getUsuario().getNome().isBlank())
+			*/
+		if(getUsuario().getNome().trim().equals("")) {
+			Util.addErrorMessage("Preencha as informações");
+			
+		}else {
+		getUsuario().setId(proximoId());
 		listaUsuario.add(getUsuario());
 		limpar();
+		}
 	}
 
 	public void limpar() {
