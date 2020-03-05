@@ -18,6 +18,7 @@ public class UsuarioController implements Serializable {
 	private Usuario usuario;
 	private List<Usuario> listaUsuario ;
 
+
 	public void incluir() {
 		listaUsuario.add(getUsuario());
 		limpar();
@@ -28,15 +29,19 @@ public class UsuarioController implements Serializable {
 	}
 
 	public void alterar() {
-		listaUsuario.set(getUsuario().getId(), getUsuario());
+		//Metodo para obter o indice34
+		int index = listaUsuario.indexOf(getUsuario());
+		listaUsuario.set(index, getUsuario());
+		limpar();
 	}
 
 	public void remover() {
 		listaUsuario.remove(getUsuario());
+		limpar();
 	
 	}
 	public void editar(Usuario usu) {
-		setUsuario(usu);
+		setUsuario(usu.getClone());
 	}
 
 	public Usuario getUsuario() {

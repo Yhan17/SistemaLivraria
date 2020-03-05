@@ -4,7 +4,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://xmlns.jcp.org/jsf/html">
 <head>
-<title>Books</title>
+<title>Cadastro de Usuarios</title>
 </head>
 <body>
 	<h1>.:Cadastro Usuario:.</h1>
@@ -27,11 +27,11 @@
 				jsf:value="#{usuarioController.usuario.email}" />
 
 			<button type="Submit"
-				jsf:actionListener="#{usuarioController.incluir}">Incluir</button>
+				jsf:actionListener="#{usuarioController.incluir}" jsf:disabled="#{usuarioController.usuario.id != null}">Incluir</button>
 			<button type="Submit"
-				jsf:actionListener="#{usuarioController.limpar}">Alterar</button>
+				jsf:actionListener="#{usuarioController.limpar}" jsf:disabled="#{usuarioController.usuario.id == null}">Alterar</button>
 
-			<button type="Submit" jsf:action="#{usuarioController.remover}">Excluir</button>
+			<button type="Submit" jsf:action="#{usuarioController.remover}" jsf:disabled="#{usuarioController.usuario.id == null}">Excluir</button>
 			<button type="Submit"
 				jsf:actionListener="#{usuarioController.limpar}">Limpar</button>
 
