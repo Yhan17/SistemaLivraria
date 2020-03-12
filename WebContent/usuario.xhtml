@@ -8,8 +8,8 @@
 </head>
 <body>
 	<h1>.:Cadastro Usuario:.</h1>
-			<h:messages style="color:red;margin:8px;" />
-	
+	<h:messages style="color:red;margin:8px;" />
+
 	<h:form>
 
 		<h:panelGrid columns="2">
@@ -21,17 +21,38 @@
 				jsf:value="#{usuarioController.usuario.login}" />
 			<p>Senha</p>
 			<input jsf:id="senha" type="password" placeholder="Senha"
-				jsf:value="#{usuarioController.usuario.senha}" />
+				jsf:value="#{usuarioController.usuario.senha}" jsf:required="true" jsf:requiredMessage="A senha deve ser informada"/>
+			<p>DataNasc</p>
+			<input type="text" placeholder="Data"
+				jsf:value="#{usuarioController.usuario.dataNasc}"> <f:convertDateTime pattern="dd/MM/yyyy" type="localDate" /></input>
 			<p>Email</p>
 			<input jsf:id="email" type="text" placeholder="Senha"
 				jsf:value="#{usuarioController.usuario.email}" />
+			<p>Tipo de Usuario</p>
+			<h:selectOneMenu value="#{usuarioController.usuario.funcao}">
+				<f:selectItem itemLabel="Selecione um tipo" />
+				<f:selectItems value="#{usuarioController.listaTipoUsuario}"
+					var="tipo" itemLabel="#{tipo.label}">
+				</f:selectItems>
+			</h:selectOneMenu>
+			<!-- Ou -->
+			<h:selectOneRadio value="#{usuarioController.usuario.funcao}">
+
+				<f:selectItems value="#{usuarioController.listaTipoUsuario}"
+					var="tipo" itemLabel="#{tipo.label}">
+				</f:selectItems>
+			</h:selectOneRadio>
+
 
 			<button type="Submit"
-				jsf:actionListener="#{usuarioController.incluir}" jsf:disabled="#{usuarioController.usuario.id != null}">Incluir</button>
+				jsf:actionListener="#{usuarioController.incluir}"
+				jsf:disabled="#{usuarioController.usuario.id != null}">Incluir</button>
 			<button type="Submit"
-				jsf:actionListener="#{usuarioController.alterar}" jsf:disabled="#{usuarioController.usuario.id == null}">Alterar</button>
+				jsf:actionListener="#{usuarioController.alterar}"
+				jsf:disabled="#{usuarioController.usuario.id == null}">Alterar</button>
 
-			<button type="Submit" jsf:action="#{usuarioController.remover}" jsf:disabled="#{usuarioController.usuario.id == null}">Excluir</button>
+			<button type="Submit" jsf:action="#{usuarioController.remover}"
+				jsf:disabled="#{usuarioController.usuario.id == null}">Excluir</button>
 			<button type="Submit"
 				jsf:actionListener="#{usuarioController.limpar}">Limpar</button>
 
@@ -60,6 +81,17 @@
 			<h:column>
 				<f:facet name="header">Email</f:facet>
 				<h:outputLabel value="#{lista.email}"></h:outputLabel>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Data Nascimento</f:facet>
+				<h:outputLabel value="#{lista.dataNasc}">
+					<f:convertDateTime pattern="dd/MM/yyyy" type="localDate"></f:convertDateTime>
+				</h:outputLabel>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Tipo Usuario</f:facet>
+				<h:outputLabel value="#{lista.funcao.label}">
+				</h:outputLabel>
 			</h:column>
 			<h:column>
 				<f:facet name="header">Ação</f:facet>

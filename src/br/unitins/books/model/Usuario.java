@@ -1,13 +1,23 @@
 package br.unitins.books.model;
 
-public class Usuario extends Entity<Usuario> {
+import java.time.LocalDate;
 
+public class Usuario extends Entity<Usuario> {
 
 	private String nome;
 	private String login;
 	private String senha;
 	private String email;
+	private LocalDate dataNasc;
+	private TipoUsuario funcao;
 
+	public LocalDate getDataNasc() {
+		return dataNasc;
+	}
+
+	public void setDataNasc(LocalDate dataNasc) {
+		this.dataNasc = dataNasc;
+	}
 
 	public String getNome() {
 		return nome;
@@ -41,9 +51,12 @@ public class Usuario extends Entity<Usuario> {
 		this.email = email;
 	}
 
+	public TipoUsuario getFuncao() {
+		return funcao;
+	}
 
-
-	
-	
+	public void setFuncao(TipoUsuario funcao) {
+		this.funcao = funcao;
+	}
 
 }
